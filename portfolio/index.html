@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Portfolio</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            background-color: #f4f4f4;
+        }
+
+        header {
+            background-color: #023338;
+            color: white;
+            padding: 30px 0;
+            text-align: center;
+        }
+
+        header h1 {
+            font-size: 2.5em;
+        }
+
+        header p {
+            font-size: 1.1em;
+            margin-top: 5px;
+        }
+
+        nav {
+            background-color: #024d67;
+            color: white;
+            padding: 10px 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        nav ul {
+            list-style-type: none;
+            display: flex;
+            justify-content: center;
+        }
+
+        nav ul li {
+            margin: 0 15px;
+        }
+
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-size: 1em;
+        }
+
+        nav ul li a:hover {
+            text-decoration: underline;
+        }
+
+        section {
+            padding: 20px 10px;
+            margin-bottom: 30px;
+        }
+
+        section#about, section#skills, section#projects, section#contact {
+            background-color: #0096a3; /* Same color as header */
+            color: white;
+        }
+
+        section#about h2, section#skills h2, section#projects h2 {
+            margin-bottom: 15px;
+            font-size: 2em;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+
+        ul {
+            list-style-type: none;
+        }
+
+        ul li {
+            font-size: 1em;
+            margin-bottom: 5px;
+        }
+
+        .project {
+            margin-bottom: 25px;
+        }
+
+        .project h3 {
+            font-size: 1.6em;
+            margin-bottom: 8px;
+        }
+
+        .project a {
+            color: #007bff;
+            text-decoration: none;
+        }
+
+        .project a:hover {
+            text-decoration: underline;
+        }
+
+        footer {
+            background-color: #037083;
+            color: white;
+            text-align: center;
+            padding: 10px 0;
+        }
+
+        footer p {
+            font-size: 1em;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>Rabail Syed</h1>
+            <p>Web Developer | Programmer | Designer</p>
+        </div>
+    </header>
+
+    <nav>
+        <ul>
+            <li><a href="#about">About Me</a></li>
+            <li><a href="#skills">Skills</a></li>
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+
+    <!-- About Me Section -->
+    <section id="about">
+        <div class="container">
+            <h2>About Me</h2>
+            <p>Hi, I'm a passionate and results-driven web developer with a strong 
+                focus on front-end technologies. With a keen eye for design and a deep 
+                understanding of user experience, I strive to create websites that are not only 
+                functional but also visually appealing. My journey in web development began with a curiosity 
+                for how websites work, and since then, I have honed my skills in HTML, CSS, JavaScript, 
+                and React. I am dedicated to writing clean, efficient, and maintainable code, 
+                and I am always excited to take on new challenges that push the boundaries of what I can create.
+                I believe in building responsive, fast, and user-friendly websites that leave a lasting impression on users. Whether it's developing complex web applications or simple, beautiful landing pages, my goal
+                is to deliver exceptional web experiences that are both engaging and seamless. I'm constantly learning and growing as a developer, staying up-to-date with the latest industry trends and best practices. Let's build something amazing together!</p>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills">
+        <div class="container">
+            <h2>Skills</h2>
+            <ul>
+                <li>HTML</li>
+                <li>CSS</li>
+                <li>JavaScript</li>
+                <li>React</li>
+                <li>Node.js</li>
+                <li>Git</li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects">
+        <div class="container">
+            <h2>Projects</h2>
+            <div class="project">
+                <h3>Project 1</h3>
+                <p>A description of your first project.</p>
+                <a href="https://github.com/yourusername/project1" target="_blank">View Project</a>
+            </div>
+            <div class="project">
+                <h3>Project 2</h3>
+                <p>A description of your second project.</p>
+                <a href="https://github.com/yourusername/project2" target="_blank">View Project</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact">
+        <div class="container">
+            <h2>Contact</h2>
+            <p>Feel free to reach out to me via email or social media:</p>
+            <ul>
+                <li>Email: rabailsyed75@gmail.com</li>
+                <li>LinkedIn: <a href="https://linkedin.com/in/rabailsyed" target="_blank">rabailsyed</a></li>
+                <li>GitHub: <a href="https://github.com/rabailsyed" target="_blank">rabailsyed</a></li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2025 Rabail Syed | All Rights Reserved</p>
+    </footer>
+
+    <script>
+        // This JavaScript code adds smooth scrolling to the page links
+        document.querySelectorAll('nav a').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
+</body>
+</html>
