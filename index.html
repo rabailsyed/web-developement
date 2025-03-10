@@ -3,149 +3,122 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Calculator</title>
+    <title>Music Player</title>
+    <link rel="stylesheet" href="styles.css">
+    <script defer src="script.js"></script>
+</head>
+<body>
+    <div class="player-container">
+        <div class="image-container">
+            <img src="adhuri.jfif" alt="Music" id="music-image">
+        </div>
+        <h3 id="artist-name">Arijit Singh</h3>
+        <audio id="audio" src="Hamari Adhuri Kahani - Hamari Adhuri Kahani 128 Kbps.mp3"></audio>
+        <audio id="audio" src="Tum Hi Ho - Aashiqui 2 128 Kbps.mp3"></audio>
+        <audio id="audio" src="Hamari Adhuri Kahani - Hamari Adhuri Kahani 128 Kbps.mp3"></audio>
+        <audio id="audio" src="Kesariya - Brahmastra 128 Kbps.mp3"></audio>
+        <audio id="audio" src="Tera Ban Jaunga - Kabir Singh 128 Kbps.mp3"></audio>
+        <audio id="audio" src="Ae Dil Hai Mushkil Title Track - Ae Dil Hai Mushkil 128 Kbps.mp3"></audio>
+        <div class="controls">
+            <button id="prev"><span>&#9665;</span></button>
+            <button id="play-pause"><span>&#9658;</span></button>
+            <button id="next"><span>&#9655;</span></button>
+        </div>
+        <div class="seek-bar-container">
+            <span id="current-time">0:00</span>
+            <input type="range" id="seek-bar" value="0">
+            <span id="duration">0:00</span>
+        </div>
+    </div>
+
     <style>
-        /* styles.css */
         body {
-            font-family: Arial, sans-serif;
-            background-color: #87CEEB; /* Sky blue */
-            
-            background-size: cover;
-            background-position: center;
             display: flex;
             justify-content: center;
             align-items: center;
             height: 100vh;
-            margin: 0;
+            background: linear-gradient(to bottom, navy, black);
+            color: white;
+            font-family: Arial, sans-serif;
         }
-
-        .calculator {
-            background-color: #480711; /* Baby pink */
-            border-radius: 12px;
-            box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.3); /* 3D effect */
-            padding: 20px;
-            width: 260px;
+        .player-container {
             text-align: center;
-            transform: perspective(1500px) rotateX(5deg) rotateY(5deg); /* 3D rotation */
-        }
-
-        .screen {
-            font-size: 36px;
-            background-color: #eaeaea;
+            background: rgba(0, 0, 0, 0.8);
             padding: 20px;
-            border-radius: 8px;
-            margin-bottom: 20px;
-            min-height: 60px;
-            display: flex;
-            justify-content: flex-end;
-            align-items: center;
-            color: #333;
-            box-shadow: inset 0px 4px 10px rgba(0, 0, 0, 0.2);
+            border-radius: 10px;
+            box-shadow: 0px 0px 20px rgba(255, 255, 255, 0.3);
         }
-
-        .buttons {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
+        .image-container img {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            animation: rotate 5s linear infinite;
+            animation-play-state: paused;
+        }
+        .controls button {
+            background: transparent;
+            border: none;
+            color: white;
+            font-size: 24px;
+            margin: 10px;
+            cursor: pointer;
+        }
+        .seek-bar-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
             gap: 10px;
         }
-
-        .btn {
-            padding: 20px;
-            font-size: 18px;
-            background-color: #bea802; /* Black */
-            color: white;
-            border: none;
-            border-radius: 8px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            box-shadow: 0px 4px 5px rgba(0, 0, 0, 0.1);
+        #seek-bar {
+            width: 200px;
         }
-
-        .btn:active {
-            transform: translateY(4px); /* Button press effect */
-            box-shadow: 0px 2px 3px rgba(0, 0, 0, 0.2);
-        }
-
-        .btn:hover {
-            background-color: #555555; /* Dark gray on hover */
-            box-shadow: 0px 6px 15px rgba(0, 0, 0, 0.2); /* Button hover shadow */
-            transform: translateY(-2px); /* Lift effect */
-        }
-
-        .equal {
-            background-color: #050505;
-            color: white;
-            grid-column: span 2;
-        }
-
-        .equal:hover {
-            background-color: #bca605;
-        }
-
-        @media (max-width: 400px) {
-            .calculator {
-                width: 90%;
+        @keyframes rotate {
+            from {
+                transform: rotate(0deg);
             }
-            .screen {
-                font-size: 28px;
-            }
-            .btn {
-                font-size: 16px;
+            to {
+                transform: rotate(360deg);
             }
         }
     </style>
-</head>
-<body>
-    <img src="images.jfif" alt="Background Image" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: -1; object-fit: cover;" />
-</body>
-    <div class="calculator">
-        <div class="screen" id="screen">0</div>
-        <div class="buttons">
-            <button class="btn" onclick="appendToScreen('1')">1</button>
-            <button class="btn" onclick="appendToScreen('2')">2</button>
-            <button class="btn" onclick="appendToScreen('3')">3</button>
-            <button class="btn" onclick="appendToScreen('+')">+</button>
-
-            <button class="btn" onclick="appendToScreen('4')">4</button>
-            <button class="btn" onclick="appendToScreen('5')">5</button>
-            <button class="btn" onclick="appendToScreen('6')">6</button>
-            <button class="btn" onclick="appendToScreen('-')">-</button>
-
-            <button class="btn" onclick="appendToScreen('7')">7</button>
-            <button class="btn" onclick="appendToScreen('8')">8</button>
-            <button class="btn" onclick="appendToScreen('9')">9</button>
-            <button class="btn" onclick="appendToScreen('*')">*</button>
-
-            <button class="btn" onclick="appendToScreen('0')">0</button>
-            <button class="btn" onclick="appendToScreen('.')">.</button>
-            <button class="btn" onclick="clearScreen()">C</button>
-            <button class="btn" onclick="appendToScreen('/')">/</button>
-
-            <button class="btn equal" onclick="calculateResult()">=</button>
-        </div>
-    </div>
+    
     <script>
-        // script.js
-        let screen = document.getElementById('screen');
+        const audio = document.getElementById("audio");
+        const playPauseBtn = document.getElementById("play-pause");
+        const seekBar = document.getElementById("seek-bar");
+        const currentTimeDisplay = document.getElementById("current-time");
+        const durationDisplay = document.getElementById("duration");
+        const musicImage = document.getElementById("music-image");
 
-        function appendToScreen(value) {
-            if (screen.innerText === '0') {
-                screen.innerText = value;
+        playPauseBtn.addEventListener("click", () => {
+            if (audio.paused) {
+                audio.play();
+                playPauseBtn.innerHTML = "&#10074;&#10074;"; // Pause icon
+                musicImage.style.animationPlayState = "running";
             } else {
-                screen.innerText += value;
+                audio.pause();
+                playPauseBtn.innerHTML = "&#9658;"; // Play icon
+                musicImage.style.animationPlayState = "paused";
             }
-        }
+        });
 
-        function clearScreen() {
-            screen.innerText = '0';
-        }
+        audio.addEventListener("timeupdate", () => {
+            seekBar.value = (audio.currentTime / audio.duration) * 100;
+            currentTimeDisplay.textContent = formatTime(audio.currentTime);
+        });
 
-        function calculateResult() {
-            try {
-                screen.innerText = eval(screen.innerText);
-            } catch {
-                screen.innerText = 'Error';
-            }
+        seekBar.addEventListener("input", () => {
+            audio.currentTime = (seekBar.value / 100) * audio.duration;
+        });
+
+        audio.addEventListener("loadedmetadata", () => {
+            durationDisplay.textContent = formatTime(audio.duration);
+        });
+
+        function formatTime(seconds) {
+            let min = Math.floor(seconds / 60);
+            let sec = Math.floor(seconds % 60);
+            return `${min}:${sec < 10 ? "0" : ""}${sec}`;
         }
     </script>
 </body>
