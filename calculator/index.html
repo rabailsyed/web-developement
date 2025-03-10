@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculator</title>
+    <style>
+        /* styles.css */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #87CEEB; /* Sky blue */
+            
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .calculator {
+            background-color: #480711; /* Baby pink */
+            border-radius: 12px;
+            box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.3); /* 3D effect */
+            padding: 20px;
+            width: 260px;
+            text-align: center;
+            transform: perspective(1500px) rotateX(5deg) rotateY(5deg); /* 3D rotation */
+        }
+
+        .screen {
+            font-size: 36px;
+            background-color: #eaeaea;
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            min-height: 60px;
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+            color: #333;
+            box-shadow: inset 0px 4px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        .buttons {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 10px;
+        }
+
+        .btn {
+            padding: 20px;
+            font-size: 18px;
+            background-color: #bea802; /* Black */
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0px 4px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .btn:active {
+            transform: translateY(4px); /* Button press effect */
+            box-shadow: 0px 2px 3px rgba(0, 0, 0, 0.2);
+        }
+
+        .btn:hover {
+            background-color: #555555; /* Dark gray on hover */
+            box-shadow: 0px 6px 15px rgba(0, 0, 0, 0.2); /* Button hover shadow */
+            transform: translateY(-2px); /* Lift effect */
+        }
+
+        .equal {
+            background-color: #050505;
+            color: white;
+            grid-column: span 2;
+        }
+
+        .equal:hover {
+            background-color: #bca605;
+        }
+
+        @media (max-width: 400px) {
+            .calculator {
+                width: 90%;
+            }
+            .screen {
+                font-size: 28px;
+            }
+            .btn {
+                font-size: 16px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <img src="images.jfif" alt="Background Image" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: -1; object-fit: cover;" />
+</body>
+    <div class="calculator">
+        <div class="screen" id="screen">0</div>
+        <div class="buttons">
+            <button class="btn" onclick="appendToScreen('1')">1</button>
+            <button class="btn" onclick="appendToScreen('2')">2</button>
+            <button class="btn" onclick="appendToScreen('3')">3</button>
+            <button class="btn" onclick="appendToScreen('+')">+</button>
+
+            <button class="btn" onclick="appendToScreen('4')">4</button>
+            <button class="btn" onclick="appendToScreen('5')">5</button>
+            <button class="btn" onclick="appendToScreen('6')">6</button>
+            <button class="btn" onclick="appendToScreen('-')">-</button>
+
+            <button class="btn" onclick="appendToScreen('7')">7</button>
+            <button class="btn" onclick="appendToScreen('8')">8</button>
+            <button class="btn" onclick="appendToScreen('9')">9</button>
+            <button class="btn" onclick="appendToScreen('*')">*</button>
+
+            <button class="btn" onclick="appendToScreen('0')">0</button>
+            <button class="btn" onclick="appendToScreen('.')">.</button>
+            <button class="btn" onclick="clearScreen()">C</button>
+            <button class="btn" onclick="appendToScreen('/')">/</button>
+
+            <button class="btn equal" onclick="calculateResult()">=</button>
+        </div>
+    </div>
+    <script>
+        // script.js
+        let screen = document.getElementById('screen');
+
+        function appendToScreen(value) {
+            if (screen.innerText === '0') {
+                screen.innerText = value;
+            } else {
+                screen.innerText += value;
+            }
+        }
+
+        function clearScreen() {
+            screen.innerText = '0';
+        }
+
+        function calculateResult() {
+            try {
+                screen.innerText = eval(screen.innerText);
+            } catch {
+                screen.innerText = 'Error';
+            }
+        }
+    </script>
+</body>
+</html>
